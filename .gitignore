@@ -10,3 +10,14 @@
 # Project
 docs/_build/
 __pycache__/
+
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.brf
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.synctex.gz
