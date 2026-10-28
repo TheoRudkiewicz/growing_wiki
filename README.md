@@ -7,8 +7,30 @@
 </p>
 <p align="center"><strong>The Growing Wiki</strong></p>
 <p align="center"><a href="https://growingnet.github.io/growing_wiki">https://growingnet.github.io/growing_wiki</a></p>
+<p align="center"><a href="https://github.com/growingnet/growing_wiki/releases/download/survey-latest/neuron_addition_survey.pdf">Companion survey (PDF)</a></p>
 
 The Growing Wiki documents algorithms for growing neural networks during training.
+It complements and continues the survey *The Neuron Addition Problem: A Survey on
+Growing Neural Networks*, whose LaTeX source is in [`survey/`](survey/). The
+[latest PDF](https://github.com/growingnet/growing_wiki/releases/download/survey-latest/neuron_addition_survey.pdf)
+is rebuilt automatically whenever the source changes.
+
+## Citation
+
+If you use the survey or the wiki in your work, please cite the survey. It has not
+been published yet; the entry below will be replaced by the published reference.
+
+<!-- TODO(citation): replace with the published reference of the survey. -->
+
+```bibtex
+@misc{davey2026neuron,
+  title        = {The Neuron Addition Problem: A Survey on Growing Neural Networks},
+  author       = {Davey, Alex and Rudkiewicz, Th{\'e}o and Rivaud, St{\'e}phane and Douka, Stella and Houdouin, F{\'e}lix and Mille, Julien and Shilova, Alena and Charpiat, Guillaume and Chevallier, Sylvain},
+  year         = {2026},
+  howpublished = {\url{https://github.com/growingnet/growing_wiki/releases/download/survey-latest/neuron_addition_survey.pdf}},
+  note         = {Preprint},
+}
+```
 
 ## Repository Layout
 
@@ -17,6 +39,7 @@ The Growing Wiki documents algorithms for growing neural networks during trainin
 - `docs/algorithms/`: per-algorithm reference pages
 - `docs/applications/`: application-focused pages
 - `references.bib`: bibliography used by the docs
+- `survey/`: LaTeX source of the companion survey (compiled to PDF by CI)
 
 ## Build Locally
 
@@ -43,6 +66,16 @@ docs/_build/html
 To rebuild automatically while editing locally after syncing the
 dependencies, run `uv run make -C docs livehtml`. Rendered html is served
 locally at `http://127.0.0.1:8000`.
+
+### Build the survey PDF
+
+With a TeX Live installation, run:
+
+```bash
+latexmk -pdf -cd survey/main.tex
+```
+
+The PDF is written to `survey/main.pdf`.
 
 ## Writing Docs
 
