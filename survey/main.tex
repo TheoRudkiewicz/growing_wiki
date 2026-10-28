@@ -1,53 +1,39 @@
-\documentclass[a4paper]{article}
-\usepackage{graphicx}%
-\usepackage{multirow}%
-\usepackage{amsmath,amssymb,amsfonts}%
-\usepackage{amsthm}%
-\usepackage{mathrsfs}%
-\usepackage[title]{appendix}%
-\usepackage{xcolor}%
-\usepackage{textcomp}%
-\usepackage{manyfoot}%
-\usepackage{booktabs}%
-\usepackage{algorithm}%
-\usepackage{algorithmicx}%
-\usepackage{algpseudocode}%
-\usepackage{listings}%
-%%%%
+\documentclass[11pt]{article}
 
-% Restore itemize indent
-\makeatletter
-\renewcommand\itemargs{%
-   \listfont%
-   \leftmargini1.5em%
-   \leftmarginii1.25em%
-   \leftmarginiii1em%
-   \ifnum\@enumdepth=3\topsep0pt\else\ifnum\@enumdepth=2\topsep0pt\else\topsep 6pt\fi\fi%
-   \partopsep     \z@%
-   \itemsep       \z@%
-   \parsep        \z@%
-   \labelsep      0.5em%
-   \rightmargin   \z@%
-   \raggedright%
-   \listparindent \z@%
-   \itemindent    \z@}%
-\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page layout: change the page margins here.
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Custom packages
-\usepackage{array}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{aliascnt}
+% Fonts
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% Maths
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+
+% Tables
+\usepackage{array,booktabs,multirow,tabularx,longtable,threeparttable}
+
+% Figures
+\usepackage{graphicx}
+\usepackage{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning}
-\usetikzlibrary{calc}
-\usepackage{soul}
+\usetikzlibrary{arrows.meta,positioning,calc}
 \usepackage{standalone}
-\usepackage{tabularx}
-\usepackage{subcaption}
 
-% \usepackage{setspace}
-% \doublespacing
+% Title block, citations and links
+\usepackage{authblk}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks,allcolors=blue]{hyperref}
+\usepackage{aliascnt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom commands
+
+% Maths shortcuts
+\input{math_commands}
+\setlength{\emergencystretch}{3em}
 
 % Fix typesetting of vector subscripts in SENN section
 \newenvironment{smallpmatrix}
@@ -58,65 +44,7 @@
 \newcommand{\sdag}{\textsuperscript{\dag}}
 \newcommand{\sddag}{\textsuperscript{\ddag}}
 
-% Fix table issues with double spacing/referee
-\AtBeginEnvironment{longtable}{\def\baselinestretch{1}\normalsize}
-
-
-% Maths shortcuts
-\input{math_commands}
-
-%% as per the requirement new theorem styles can be included as shown below
-\theoremstyle{thmstyleone}%
-\newtheorem{theorem}{Theorem}%  meant for continuous numbers
-%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
-%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
-\newaliascnt{proposition}{theorem}
-\newtheorem{proposition}[proposition]{Proposition}%
-\aliascntresetthe{proposition}
-\providecommand*{\propositionautorefname}{Proposition}
-%%\newtheorem{proposition}{Proposition}% to get separate numbers for theorem and proposition etc.
-
-\theoremstyle{thmstyletwo}%
-\newtheorem{example}{Example}%
-\newtheorem{remark}{Remark}%
-
-\theoremstyle{thmstylethree}%
-\newtheorem{definition}{Definition}%
-
-\raggedbottom
-%%\unnumbered% uncomment this for unnumbered level heads
-
-
-
-
-%%%% From the old proof document
-
-\usepackage{amsmath,amssymb,amsthm,mathtools}
-\usepackage{longtable}
-
-\numberwithin{equation}{section}
-% Keep lemma numbering with theorem while making \autoref print "Lemma".
-\newaliascnt{lemma}{theorem}
-\newtheorem{lemma}[lemma]{Lemma}
-\aliascntresetthe{lemma}
-\providecommand*{\lemmaautorefname}{Lemma}
-\newaliascnt{corollary}{theorem}
-\newtheorem{corollary}[corollary]{Corollary}
-\aliascntresetthe{corollary}
-\providecommand*{\corollaryautorefname}{Corollary}
-
-\begin{document}
-
-\title[The Neuron Addition Problem: A Survey on Growing Neural Networks]{The Neuron Addition Problem: A Survey on Growing Neural Networks}
-
-%%=============================================================%%
-%% GivenName	-> \fnm{Joergen W.}
-%% Particle	-> \spfx{van der} -> surname prefix
-%% FamilyName	-> \sur{Ploeg}
-%% Suffix	-> \sfx{IV}
-%% \author*[1,2]{\fnm{Joergen W.} \spfx{van der} \sur{Ploeg} 
-%%  \sfx{IV}}\email{iauthor@gmail.com}
-%%=============================================================%%
+% ORCID logo linking to the author's ORCID page
 \definecolor{orcidgreen}{HTML}{A6CE39}
 \newcommand{\orcidlogo}{%
   \raisebox{-0.1ex}{%
@@ -126,39 +54,78 @@
     \end{tikzpicture}%
   }%
 }
-\newcommand{\orcid}[1]{\,\href{https://orcid.org/#1}{\orcidlogo}}
+\DeclareRobustCommand{\orcid}[1]{\,\href{https://orcid.org/#1}{\orcidlogo}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorems
 
-\author*[]{\fnm{Alex} \sur{Davey}$^*$\orcid{0000-0002-2271-4501}}\email{alex.davey@inria.fr}
-\equalcont{These authors contributed equally to this work.}
-\author*[]{\fnm{Théo} \sur{Rudkiewicz}$^*$\orcid{0009-0003-4374-531X}}\email{theo.rudkiewicz@inria.fr}
-\equalcont{These authors contributed equally to this work.}
+\numberwithin{equation}{section}
 
-\author[]{\fnm{Stéphane} \sur{Rivaud}\orcid{0000-0002-1363-442X}}\email{stephane.a.rivaud@inria.fr}
-\author[]{\fnm{Stella} \sur{Douka}\orcid{0009-0002-1088-7568}}\email{styliani.douka@inria.fr}
-\author[]{\fnm{Félix} \sur{Houdouin}\orcid{0009-0004-4764-410X}}\email{felix.houdouin@polytechnique.edu}
-\author[]{\fnm{Julien} \sur{Mille}\orcid{0000-0002-8081-9790}}\email{julien.mille@inria.fr}
-\author[]{\fnm{Alena} \sur{Shilova}\orcid{0000-0002-1795-8421}}\email{alena.shilova@inria.fr}
-\author[]{\fnm{Guillaume} \sur{Charpiat}\orcid{0009-0003-6000-9410}}\email{guillaume.charpiat@inria.fr}
-\author[]{\fnm{Sylvain} \sur{Chevallier}\orcid{0000-0003-3027-8241}}\email{sylvain.chevallier@universite-paris-saclay.fr}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+% Proposition, lemma and corollary share the theorem counter; the alias
+% counters make \autoref print the right name.
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\providecommand*{\propositionautorefname}{Proposition}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\providecommand*{\lemmaautorefname}{Lemma}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\providecommand*{\corollaryautorefname}{Corollary}
 
-\affil[]{\orgdiv{Université Paris-Saclay}, \orgname{CNRS, INRIA, LISN}, \orgaddress{\city{Orsay}, \postcode{91405}, \country{France}}}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
 
-\abstract{
-\input{subtex/abstract.tex}
-}
+\theoremstyle{remark}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
 
-\keywords{Neural networks, Model structure, Optimization, Energy efficiency}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title and authors
 
-%%\pacs[JEL Classification]{D8, H51}
+\title{The Neuron Addition Problem: A Survey on Growing Neural Networks}
 
-%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+\author{Alex~Davey$^*$\orcid{0000-0002-2271-4501}}
+\author{Théo~Rudkiewicz$^*$\orcid{0009-0003-4374-531X}}
+\author{Stéphane~Rivaud\orcid{0000-0002-1363-442X}}
+\author{Stella~Douka\orcid{0009-0002-1088-7568}}
+\author{Félix~Houdouin\orcid{0009-0004-4764-410X}}
+\author{Julien~Mille\orcid{0000-0002-8081-9790}}
+\author{Alena~Shilova\orcid{0000-0002-1795-8421}}
+\author{Guillaume~Charpiat\orcid{0009-0003-6000-9410}}
+\author{Sylvain~Chevallier\orcid{0000-0003-3027-8241}}
+\affil{Université Paris-Saclay, CNRS, INRIA, LISN, Orsay, 91405, France}
+\date{}
+
+\begin{document}
 
 \maketitle
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% First-page footnote, marked with *, with the contact e-mails
+{\renewcommand{\thefootnote}{*}\footnotetext{%
+  Equal contribution. Corresponding authors:
+  \href{mailto:alex.davey@inria.fr}{alex.davey@inria.fr},
+  \href{mailto:theo.rudkiewicz@inria.fr}{theo.rudkiewicz@inria.fr}.\\
+  Contributing authors:
+  stephane.a.rivaud@inria.fr,
+  styliani.douka@inria.fr,
+  felix.houdouin@polytechnique.edu,
+  julien.mille@inria.fr,
+  alena.shilova@inria.fr,
+  guillaume.charpiat@inria.fr,
+  sylvain.chevallier@universite-paris-saclay.fr.}}
 
-% Single author syntax
+\begin{abstract}
+\input{subtex/abstract.tex}
+
+\medskip
+\noindent\textbf{Keywords:} Neural networks, Model structure, Optimization, Energy efficiency
+\end{abstract}
 
 \section{Introduction}
 
@@ -186,28 +153,16 @@
 
 \section{Open Questions and Future Directions}\label{sec:conclusion}
 
-\input{conclusion.tex}
-
-\backmatter
+\input{subtex/conclusion.tex}
 
 \input{subtex/aknolegments_and_contributions.tex}
 
 \newpage
-\begin{appendices}
+\appendix
 \section{Proofs}\label{app:proofs}
 \input{subtex/proofs.tex}
 
-\end{appendices}
-
-%%===========================================================================================%%
-%% If you are submitting to one of the Nature Portfolio journals, using the eJP submission   %%
-%% system, please include the references within the manuscript file itself. You may do this  %%
-%% by copying the reference list from your .bbl file, paste it into the main manuscript .tex %%
-%% file, and delete the associated \verb+\bibliography+ commands.                            %%
-%%===========================================================================================%%
-
-\bibliography{bibliography}% common bib file
-%% if required, the content of .bbl file can be included here once bbl is generated
-%%\input main.bbl
+\bibliographystyle{plainnat}
+\bibliography{bibliography}
 
 \end{document}
