@@ -23,12 +23,14 @@ been published yet; the entry below will be replaced by the published reference.
 <!-- TODO(citation): replace with the published reference of the survey. -->
 
 ```bibtex
-@misc{davey2026neuron,
-  title        = {The Neuron Addition Problem: A Survey on Growing Neural Networks},
-  author       = {Davey, Alex and Rudkiewicz, Th{\'e}o and Rivaud, St{\'e}phane and Douka, Stella and Houdouin, F{\'e}lix and Mille, Julien and Shilova, Alena and Charpiat, Guillaume and Chevallier, Sylvain},
-  year         = {2026},
-  howpublished = {\url{https://github.com/growingnet/growing_wiki/releases/download/survey-latest/neuron_addition_survey.pdf}},
-  note         = {Preprint},
+@unpublished{daveyNeuronAdditionProblem2026,
+  TITLE = {{The Neuron Addition Problem: A Survey on Growing Neural Networks}},
+  AUTHOR = {Davey, Alex and Rudkiewicz, Théo and Rivaud, Stéphane and Douka, Stella and Houdouin, Félix and Mille, Julien and Shilova, Alena and Charpiat, Guillaume and Chevallier, Sylvain},
+  URL = {https://hal.science/hal-05842579},
+  YEAR = {2026},
+  MONTH = Oct,
+  PDF = {https://hal.science/hal-05842579v1/file/main.pdf},
+  HAL_ID = {hal-05842579},
 }
 ```
 

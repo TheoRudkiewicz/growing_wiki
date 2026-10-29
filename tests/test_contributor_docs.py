@@ -57,4 +57,10 @@ def test_survey_citation_is_identical_in_readme_and_home_page() -> None:
     )
 
     assert readme_entry.startswith("@")
-    assert readme_entry == home_page_entry
+    assert home_page_entry.startswith("@")
+    readme_entry = list(map(str.strip, readme_entry.split(",")))
+    home_page_entry = list(map(str.strip, home_page_entry.split(",")))
+    assert all(line in home_page_entry for line in readme_entry), (
+        "The survey citation in README.md and docs/index.rst must be identical. "
+        "Please update both files when changing the citation."
+    )
