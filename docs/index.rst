@@ -14,7 +14,7 @@ The Growing Wiki
 
 Growing Neural Networks start small and grow over the course of training, by e.g. adding neurons or layers. By only growing as large as necessary, and no larger, such methods offer the potential of improved efficiency and remove the need to select architectures by hand.
 
-The Growing Wiki complements and continues our survey *The Neuron Addition Problem: A Survey on Growing Neural Networks* (`PDF <https://github.com/growingnet/growing_wiki/releases/download/survey-latest/neuron_addition_survey.pdf>`__).
+The Growing Wiki complements and continues our survey `The Neuron Addition Problem: A Survey on Growing Neural Networks <https://hal.science/hal-05842579>`__.
 
 The Growing Wiki is primarily maintained by the `Inria Tau team <https://www.inria.fr/en/tau>`__, but outside contributors are always welcome on `GitHub <https://github.com/growingnet/growing_wiki>`__. We also manage the `Gromo <https://github.com/growingnet/gromo>`__ PyTorch package for growing neural networks.
 

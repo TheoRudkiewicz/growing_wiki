@@ -7,11 +7,11 @@
 </p>
 <p align="center"><strong>The Growing Wiki</strong></p>
 <p align="center"><a href="https://growingnet.github.io/growing_wiki">https://growingnet.github.io/growing_wiki</a></p>
-<p align="center"><a href="https://github.com/growingnet/growing_wiki/releases/download/survey-latest/neuron_addition_survey.pdf">Companion survey (PDF)</a></p>
+<p align="center"><a href="https://hal.science/hal-05842579">Companion survey (PDF)</a></p>
 
 The Growing Wiki documents algorithms for growing neural networks during training.
-It complements and continues the survey *The Neuron Addition Problem: A Survey on
-Growing Neural Networks*, whose LaTeX source is in [`survey/`](survey/). The
+It complements and continues the survey [The Neuron Addition Problem: A Survey on
+Growing Neural Networks](https://hal.science/hal-05842579), whose LaTeX source is in [`survey/`](survey/). The
 [latest PDF](https://github.com/growingnet/growing_wiki/releases/download/survey-latest/neuron_addition_survey.pdf)
 is rebuilt automatically whenever the source changes.
 
